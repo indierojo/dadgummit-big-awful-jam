@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class menuScript : MonoBehaviour {
-
+    
+ 
     public Canvas selectAgeMenu;
     public Canvas questionOne;
     public Canvas questionTwo;
@@ -15,7 +16,7 @@ public class menuScript : MonoBehaviour {
     public Button playButton;
     public Button exitButton;
 
-    public int questionNumber;
+    private int questionNumber;
 
 	// Use this for initialization
 	void Start () {
@@ -29,13 +30,7 @@ public class menuScript : MonoBehaviour {
         playButton = playButton.GetComponent<Button>();
         exitButton = exitButton.GetComponent<Button>();
 
-        selectAgeMenu.enabled = false;
-        questionOne.enabled = false;
-        questionTwo.enabled = false;
-        questionThree.enabled = false;
-        failScreen.enabled = false;
-        testStart.enabled = false;
-        successMenu.enabled = false;
+        
 
         questionNumber = 0;
     }
@@ -44,13 +39,7 @@ public class menuScript : MonoBehaviour {
     {
         playButton.enabled = false;
         exitButton.enabled = false;
-        selectAgeMenu.enabled = false;
-        questionOne.enabled = false;
-        questionTwo.enabled = false;
-        questionThree.enabled = false;
-        failScreen.enabled = false;
-        testStart.enabled = false;
-        successMenu.enabled = false;
+        RemoveScreens();
 
         switch (questionNumber)
         {
@@ -80,13 +69,7 @@ public class menuScript : MonoBehaviour {
     {
         playButton.enabled = true;
         exitButton.enabled = true;
-        selectAgeMenu.enabled = false;
-        questionOne.enabled = false;
-        questionTwo.enabled = false;
-        questionThree.enabled = false;
-        failScreen.enabled = false;
-        testStart.enabled = false;
-        successMenu.enabled = false;
+        RemoveScreens();
     }
 
     public void StartLevel()
@@ -107,13 +90,18 @@ public class menuScript : MonoBehaviour {
 
     public void WrongButton()
     {
+        RemoveScreens();
         failScreen.enabled = true;
+    }
+
+    void RemoveScreens()
+    {
         selectAgeMenu.enabled = false;
         questionOne.enabled = false;
         questionTwo.enabled = false;
         questionThree.enabled = false;
+        failScreen.enabled = false;
         testStart.enabled = false;
         successMenu.enabled = false;
     }
-
 }

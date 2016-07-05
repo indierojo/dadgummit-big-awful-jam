@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{39B7965F-2767-B544-4EA9-8851C3933FA5}") = "dadgummit-big-awful-jam", "Assembly-CSharp.csproj", "{AA65A46F-D6CB-F3BD-609B-43C428C45966}"
 EndProject
+Project("{39B7965F-2767-B544-4EA9-8851C3933FA5}") = "dadgummit-big-awful-jam", "Assembly-CSharp-Editor.csproj", "{2E161450-AF36-B6CE-9798-9903D99339A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{AA65A46F-D6CB-F3BD-609B-43C428C45966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA65A46F-D6CB-F3BD-609B-43C428C45966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA65A46F-D6CB-F3BD-609B-43C428C45966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E161450-AF36-B6CE-9798-9903D99339A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E161450-AF36-B6CE-9798-9903D99339A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E161450-AF36-B6CE-9798-9903D99339A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E161450-AF36-B6CE-9798-9903D99339A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
