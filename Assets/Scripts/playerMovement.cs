@@ -14,7 +14,7 @@ public class playerMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         movex = Input.GetAxisRaw("Horizontal");
         movey = Input.GetAxisRaw("Vertical");
 
@@ -29,4 +29,6 @@ public class playerMovement : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = new Vector2(movex * speed, movey * speed);
 
     }
+
+    
 }

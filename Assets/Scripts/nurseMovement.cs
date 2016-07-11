@@ -17,18 +17,17 @@ public class nurseMovement : MonoBehaviour {
     private float destination;
     private int pathPosition = -1;
 
-    
+    public Transform sightStart, sightEnd;
 
     void Start () {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-
+        RayCasting();
         readPath();
     }
 	
-	// Update is called once per frame
-	void Update () {
-        
+	void FixedUpdate () {
+        RayCasting();
         switch (direction)
         {
             case 'n':
@@ -137,6 +136,14 @@ public class nurseMovement : MonoBehaviour {
         
     }
 
-   
+    void RayCasting()
+    {
+        Debug.DrawLine(sightStart.position, sightEnd.position, Color.green);
+    }
+
+    void Behaviors()
+    {
+
+    }
 
 }
