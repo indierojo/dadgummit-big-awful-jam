@@ -4,7 +4,8 @@ using System.Collections;
 public class playerMovement : MonoBehaviour {
 
     Animator anim;
-    public float speed = 0;
+    public static float speedMultiplier = 1f;
+    public float speed = .7f;
     private float movex = 0f;
     private float movey = 0f;
     private bool isWalking = false;
@@ -26,7 +27,7 @@ public class playerMovement : MonoBehaviour {
             anim.SetFloat("x", movex);
             anim.SetFloat("y", movey);
         }
-        GetComponent<Rigidbody2D>().velocity = new Vector2(movex * speed, movey * speed);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(movex * speed * speedMultiplier, movey * speed * speedMultiplier);
 
     }
 

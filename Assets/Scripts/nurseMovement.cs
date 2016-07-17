@@ -17,7 +17,12 @@ public class nurseMovement : MonoBehaviour {
     private float destination;
     private int pathPosition = -1;
 
-    public Transform sightStart, sightEnd;
+    public float sightDistance = 1;
+    RaycastHit2D hit;
+    public bool spotted = false;
+    Vector2 current;
+    public Transform sightSpot;
+
 
     void Start () {
         anim = GetComponent<Animator>();
@@ -132,13 +137,41 @@ public class nurseMovement : MonoBehaviour {
                 break;
         }
         destination = (float)Math.Round(destination, 2);
-        Debug.Log("Current: " + transform.position.x + ", " + distPath + direction + " Destination: " + destination);
+        //Debug.Log("Current: " + transform.position.x + ", " + distPath + direction + " Destination: " + destination);
         
     }
 
     void RayCasting()
     {
-        Debug.DrawLine(sightStart.position, sightEnd.position, Color.green);
+        switch (direction)
+        {
+            case 'n':
+                current = sightSpot.TransformDirection(Vector2.up);
+                break;
+            case 'e':
+                current = sightSpot.TransformDirection(Vector2.right);
+                break;
+            case 's':
+                current = sightSpot.TransformDirection(Vector2.down);
+                break;
+            case 'w':
+                current = sightSpot.TransformDirection(Vector2.left);
+                break;
+        }
+        
+        
+        
+        hit = Physics2D.Raycast(sightSpot.position, current, (float)(sightDistance * .32), ~(1 << LayerMask.NameToLayer("Enemy")));
+        //Debug.Log("hit: " + hit.collider.gameObject.name + " Distance: " + hit.distance);
+        
+        if (hit.collider != null && hit.collider.gameObject.name == "player")
+        {
+            Debug.Log("hit: " + hit.collider.gameObject.name + " Distance: " + hit.distance);
+            spotted = true; 
+            speed = 0;
+            playerMovement.speedMultiplier = 0;
+        }
+            
     }
 
     void Behaviors()
