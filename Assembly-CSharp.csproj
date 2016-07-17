@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\SceneFader.cs" />
      <Compile Include="Assets\Scripts\YequalsZ.cs" />
      <Compile Include="Assets\Scripts\nurseMovement.cs" />
      <Compile Include="Assets\Scripts\playerMovement.cs" />
