@@ -23,10 +23,14 @@ public class nurseMovement : MonoBehaviour {
     Vector2 current;
     public Transform sightSpot;
 
+    public GameObject expression;
+    SpriteRenderer exRender;
+
 
     void Start () {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        exRender = expression.GetComponent<SpriteRenderer>();
         RayCasting();
         readPath();
     }
@@ -167,7 +171,7 @@ public class nurseMovement : MonoBehaviour {
         if (hit.collider != null && hit.collider.gameObject.name == "player")
         {
             Debug.Log("hit: " + hit.collider.gameObject.name + " Distance: " + hit.distance);
-            spotted = true; 
+            exRender.enabled = true;
             speed = 0;
             playerMovement.speedMultiplier = 0;
         }
