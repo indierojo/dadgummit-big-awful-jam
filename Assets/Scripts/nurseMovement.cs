@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
+
 
 public class nurseMovement : MonoBehaviour {
 
@@ -25,7 +27,8 @@ public class nurseMovement : MonoBehaviour {
 
     public GameObject expression;
     SpriteRenderer exRender;
-
+    public int sceneNumber = 0;
+    
 
     void Start () {
         anim = GetComponent<Animator>();
@@ -170,12 +173,32 @@ public class nurseMovement : MonoBehaviour {
         
         if (hit.collider != null && hit.collider.gameObject.name == "player")
         {
-            Debug.Log("hit: " + hit.collider.gameObject.name + " Distance: " + hit.distance);
+            //Debug.Log("hit: " + hit.collider.gameObject.name + " Distance: " + hit.distance);
             exRender.enabled = true;
             speed = 0;
             playerMovement.speedMultiplier = 0;
+            StartCoroutine(WaitTime(2));
+            
+            
         }
             
+    }
+
+    IEnumerator WaitTime(int a)
+    {
+        yield return new WaitForSeconds(a);
+        playerMovement.speedMultiplier = 1;
+        GameVariables.lives -= 1;
+        Debug.Log(GameVariables.lives);
+        if(GameVariables.lives <= 0)
+        {
+            SceneManager.LoadScene("Lose");
+            Debug.Log("Lost");
+        } else
+        {
+            SceneManager.LoadScene(sceneNumber);
+        }
+        
     }
 
     void Behaviors()
