@@ -188,14 +188,16 @@ public class nurseMovement : MonoBehaviour {
     {
         yield return new WaitForSeconds(a);
         playerMovement.speedMultiplier = 1;
-        GameVariables.lives -= 1;
+        
+        
         Debug.Log(GameVariables.lives);
-        if(GameVariables.lives <= 0)
+        if(GameVariables.lives <= 1)
         {
             SceneManager.LoadScene("Lose");
             Debug.Log("Lost");
         } else
         {
+            GameVariables.lives -= 1;
             SceneManager.LoadScene(sceneNumber);
         }
         
