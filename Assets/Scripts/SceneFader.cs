@@ -12,7 +12,9 @@ public class SceneFader : MonoBehaviour {
     public Text daysLeft;
 	// Use this for initialization
 	void Start () {
+        
         sr = GetComponent<Image>();
+        playerMovement.speedMultiplier = 0;
         if (fadeIn)
         {
             sr.enabled = true;
@@ -20,12 +22,14 @@ public class SceneFader : MonoBehaviour {
             fadeTime = (float)(fadeTime/ 255);
             daysLeft = daysLeft.GetComponent<Text>();
             daysLeft.enabled = true;
+            
         }
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if(waitTime > 0)
+        Debug.Log("SceneFader running");
+        if (waitTime > 0)
         {
             waitTime -= Time.deltaTime;
             return;
@@ -40,6 +44,8 @@ public class SceneFader : MonoBehaviour {
                 sr.color = Color.clear;
                 sr.enabled = false;
                 daysLeft.enabled = false;
+                enabled = false;
+                playerMovement.speedMultiplier = 1;
             }
         } else
         {
