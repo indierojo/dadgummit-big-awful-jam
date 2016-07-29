@@ -177,7 +177,7 @@ public class nurseMovement : MonoBehaviour {
             exRender.enabled = true;
             speed = 0;
 			playerMovement.speedMultiplier = 0;
-			GameVariables.music.spatialBlend = 1;
+			GameVariables.music.spatialBlend = .60f;
             StartCoroutine(WaitTime(2));
             
             
@@ -191,7 +191,6 @@ public class nurseMovement : MonoBehaviour {
 
         playerMovement.speedMultiplier = 1;
         
-		GameVariables.music.Stop ();
         Debug.Log(GameVariables.lives);
         if(GameVariables.lives <= 1)
         {
@@ -200,7 +199,7 @@ public class nurseMovement : MonoBehaviour {
         } else
         {
             GameVariables.lives -= 1;
-			GameVariables.music.Play ();
+			GameVariables.music.UnPause ();
             SceneManager.LoadScene(sceneNumber);
         }
         

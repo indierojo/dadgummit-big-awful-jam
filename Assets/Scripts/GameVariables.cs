@@ -9,8 +9,8 @@ public class GameVariables : MonoBehaviour {
 	void Start () {
         DontDestroyOnLoad(transform.gameObject);
 		music = transform.GetComponent<AudioSource> ();
-		music.Play ();
-		GameVariables.music.spatialBlend = 0;
+		music.spatialBlend = .90f;
+		music.loop = true;
 	}
 	
 	// Update is called once per frame

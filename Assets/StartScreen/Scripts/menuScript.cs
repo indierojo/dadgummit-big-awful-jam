@@ -75,6 +75,8 @@ public class menuScript : MonoBehaviour {
     public void StartLevel()
     {
         SceneManager.LoadScene(1);
+		GameVariables.music.Play ();
+		GameVariables.music.spatialBlend = 0;
     }
 
     public void ExitGame()

@@ -36,21 +36,20 @@ public class SceneFader : MonoBehaviour {
         }
 
         currentAlpha += fadeTime;
-        if (fadeIn)
-        {
-            sr.color = Color.Lerp(Color.black, Color.clear, currentAlpha);
-            if(sr.color.a <= 0.05f)
-            {
-                sr.color = Color.clear;
-                sr.enabled = false;
-                daysLeft.enabled = false;
-                enabled = false;
-                playerMovement.speedMultiplier = 1;
-            }
-        } else
-        {
+		if (fadeIn) {
+			GameVariables.music.spatialBlend = .90f * waitTime;
+			sr.color = Color.Lerp (Color.black, Color.clear, currentAlpha);
+			if (sr.color.a <= 0.05f) {
+				sr.color = Color.clear;
+				sr.enabled = false;
+				daysLeft.enabled = false;
+				enabled = false;
+				playerMovement.speedMultiplier = 1;
+			}
+		} else {
+			GameVariables.music.spatialBlend = .45f * (2 - waitTime); // 2 -> 0; 1 -> .45; 0 -> .90
             sr.color = Color.Lerp(sr.color, Color.black, fadeTime);
-            if (sr.color.a >= .95f)
+ 		           if (sr.color.a >= .95f)
             {
                 sr.color = Color.black;
             }
