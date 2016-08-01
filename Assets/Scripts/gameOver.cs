@@ -5,6 +5,8 @@ using System.Collections;
 
 public class gameOver : MonoBehaviour {
 
+    public int loadLevel = 1;
+
     public void ExitGame()
     {
         
@@ -14,6 +16,6 @@ public class gameOver : MonoBehaviour {
     public void StartGame()
     {
         GameVariables.lives = 3;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(loadLevel);
     }
 }
