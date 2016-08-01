@@ -21,7 +21,7 @@ public class nurseMovement : MonoBehaviour {
 
     public float sightDistance = 1;
     RaycastHit2D hit;
-    public bool spotted = false;
+    bool spotted = false;
     Vector2 current;
     public Transform sightSpot;
 
@@ -36,6 +36,7 @@ public class nurseMovement : MonoBehaviour {
         exRender = expression.GetComponent<SpriteRenderer>();
         RayCasting();
         readPath();
+        spotted = false;
     }
 	
 	void FixedUpdate () {
@@ -171,16 +172,15 @@ public class nurseMovement : MonoBehaviour {
         hit = Physics2D.Raycast(sightSpot.position, current, (float)(sightDistance * .32), ~(1 << LayerMask.NameToLayer("Enemy")));
         //Debug.Log("hit: " + hit.collider.gameObject.name + " Distance: " + hit.distance);
         
-        if (hit.collider != null && hit.collider.gameObject.name == "player")
+        if (!spotted && hit.collider != null && hit.collider.gameObject.name == "player")
         {
             //Debug.Log("hit: " + hit.collider.gameObject.name + " Distance: " + hit.distance);
             exRender.enabled = true;
             speed = 0;
 			playerMovement.speedMultiplier = 0;
-			GameVariables.music.spatialBlend = .60f;
+			//GameVariables.music.spatialBlend = .60f;
+            spotted = true;
             StartCoroutine(WaitTime(2));
-            
-            
         }
             
     }
@@ -199,7 +199,7 @@ public class nurseMovement : MonoBehaviour {
         } else
         {
             GameVariables.lives -= 1;
-			GameVariables.music.UnPause ();
+			//GameVariables.music.UnPause ();
             SceneManager.LoadScene(sceneNumber);
         }
         

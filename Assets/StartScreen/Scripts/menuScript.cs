@@ -15,6 +15,7 @@ public class menuScript : MonoBehaviour {
     public Canvas failScreen;
     public Button playButton;
     public Button exitButton;
+    public Text failText;
 
     private int questionNumber;
 
@@ -29,7 +30,7 @@ public class menuScript : MonoBehaviour {
         testStart = testStart.GetComponent<Canvas>();
         playButton = playButton.GetComponent<Button>();
         exitButton = exitButton.GetComponent<Button>();
-
+        failText = failText.GetComponent<Text>();
         
 
         questionNumber = 0;
@@ -45,18 +46,23 @@ public class menuScript : MonoBehaviour {
         {
             case 0:
                 selectAgeMenu.enabled = true;
+                failText.text = "Too young for this game";
                 break;
             case 1:
                 testStart.enabled = true;
+                
                 break;
             case 2:
                 questionOne.enabled = true;
+                failText.text = "I knew you weren't old, think hamburgers";
                 break;
             case 3:
                 questionTwo.enabled = true;
+                failText.text = "Google the rat pack, whippersnapper";
                 break;
             case 4:
                 questionThree.enabled = true;
+                failText.text = "Papa's Got a Brand New Bag, but you're too young";
                 break;
             case 5:
                 successMenu.enabled = true;

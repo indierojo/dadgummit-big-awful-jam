@@ -28,7 +28,7 @@ public class SceneFader : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        Debug.Log("SceneFader running");
+        //Debug.Log("SceneFader running");
         if (waitTime > 0)
         {
             waitTime -= Time.deltaTime;
@@ -37,7 +37,7 @@ public class SceneFader : MonoBehaviour {
 
         currentAlpha += fadeTime;
 		if (fadeIn) {
-			GameVariables.music.spatialBlend = .90f * waitTime;
+			//GameVariables.music.spatialBlend = .90f * waitTime;
 			sr.color = Color.Lerp (Color.black, Color.clear, currentAlpha);
 			if (sr.color.a <= 0.05f) {
 				sr.color = Color.clear;
